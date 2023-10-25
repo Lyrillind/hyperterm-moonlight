@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "license": "MIT",
+    "name": "hyperterm-moonlight",
+    "description": "Moonlight VSCode theme for Hyper terminal",
+    "author": "Lyrillind <lyrillind@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://www.github.com/Lyrillind/hyperterm-moonlight"
+    },
+    "main": "index.js",
+    "keywords": [
+        "hyper",
+        "hyper-theme",
+        "moonlight",
+        "theme"
+    ]
+}
