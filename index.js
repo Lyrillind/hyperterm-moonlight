@@ -69,14 +69,14 @@ exports.decorateConfig = (config) => {
         windowControlsCSS = '.list_2902 { margin-left: 0 !important; }';
     }
 
-    const ayu = config.ayu || {};
+    const moonlight = config.moonlight || {};
     const isWin = /^win/.test(process.platform);
 
     // tab border customization
     let tabBorder = '';
     let tabNoFirstChild = '';
-    let headerBorderColor = ayu.noBorder === true || ayu.showHeaderBorder === false ? BACKGROUND : TAB_BORDER_COLOR;
-    let tabBorderColor = ayu.noBorder === true || ayu.showTabBorder === false ? BACKGROUND : TAB_BORDER_COLOR;
+    let headerBorderColor = moonlight.noBorder === true || moonlight.showHeaderBorder === false ? BACKGROUND : TAB_BORDER_COLOR;
+    let tabBorderColor = moonlight.noBorder === true || moonlight.showTabBorder === false ? BACKGROUND : TAB_BORDER_COLOR;
 
     // environment specifics
     if (isWin) {
@@ -90,81 +90,82 @@ exports.decorateConfig = (config) => {
     let headerForegroundColor = WHITE;
     let headerBackgroundColor = BACKGROUND;
     if (isWin) {
-        headerBackgroundColor = ayu.headerBackgroundColor || headerBackgroundColor;
-        headerForegroundColor = ayu.headerForegroundColor || headerForegroundColor;
+        headerBackgroundColor = moonlight.headerBackgroundColor || headerBackgroundColor;
+        headerForegroundColor = moonlight.headerForegroundColor || headerForegroundColor;
     }
 
     return Object.assign({}, config, {
         foregroundColor: FOREGROUND,
         backgroundColor: BACKGROUND,
+        selectionColor: '#C8D3F54C',
         borderColor: BORDER_COLOR,
         cursorColor: CURSOR_COLOR,
         colors,
         css: `
-      ${config.css || ''}
-      .hyper_main {
-        border: none !important;
-      }
-      .splitpane_divider {
-        background-color: ${tabBorderColor} !important;
-      }
-      .header_header {
-        background: transparent !important;
-        border-bottom: none !important;
-      }
-      .header_header, .header_windowHeader {
-        top: 0;
-        left: 0;
-        right: 0;
-        color: ${headerForegroundColor} !important;
-      }
-      .tabs_list {
-        position: relative;
-      }
-      .tabs_list:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -77px;
-        width: 77px;
-        height: 100%;
-        background-color: rgba(0,0,0,0.1);
-      }
-      .header_shape {
-        color: ${headerForegroundColor} !important;
-      }
-      .tabs_title {
-        color: ${TAB_TEXT_COLOR};
-        font-weight: 600;
-      }
-      .tab_tab {
-        border: 0;
-        ${tabBorder}
-        background-color: rgba(0,0,0,0.1) !important;
-      }
-      .tab_tab${tabNoFirstChild} {
-        border-left: 1px solid ${tabBorderColor} !important;
-      }
-      .tab_text {
-        color: ${TAB_TEXT_COLOR};
-        font-weight: normal;
-      }
-      .tab_tab.tab_active {
-        background-color: transparent !important;
-      }
-      .tab_textActive {
-        color: ${TAB_TEXT_COLOR};
-        font-weight: 600;
-      }
-      .tab_icon {
-        color: ${TAB_TEXT_COLOR};
-        font-weight: 600;
-      }
-      .tab_icon:hover {
-        color: ${TAB_TEXT_COLOR};
-        font-weight: 600;
-      }
-      ${windowControlsCSS}
-    `
+          ${config.css || ''}
+          .hyper_main {
+            border: none !important;
+          }
+          .splitpane_divider {
+            background-color: ${tabBorderColor} !important;
+          }
+          .header_header {
+            background: transparent !important;
+            border-bottom: none !important;
+          }
+          .header_header, .header_windowHeader {
+            top: 0;
+            left: 0;
+            right: 0;
+            color: ${headerForegroundColor} !important;
+          }
+          .tabs_list {
+            position: relative;
+          }
+          .tabs_list:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -77px;
+            width: 77px;
+            height: 100%;
+            background-color: rgba(0,0,0,0.1);
+          }
+          .header_shape {
+            color: ${headerForegroundColor} !important;
+          }
+          .tabs_title {
+            color: ${TAB_TEXT_COLOR};
+            font-weight: 600;
+          }
+          .tab_tab {
+            border: 0;
+            ${tabBorder}
+            background-color: rgba(0,0,0,0.1) !important;
+          }
+          .tab_tab${tabNoFirstChild} {
+            border-left: 1px solid ${tabBorderColor} !important;
+          }
+          .tab_text {
+            color: ${TAB_TEXT_COLOR};
+            font-weight: normal;
+          }
+          .tab_tab.tab_active {
+            background-color: transparent !important;
+          }
+          .tab_textActive {
+            color: ${TAB_TEXT_COLOR};
+            font-weight: 600;
+          }
+          .tab_icon {
+            color: ${TAB_TEXT_COLOR};
+            font-weight: 600;
+          }
+          .tab_icon:hover {
+            color: ${TAB_TEXT_COLOR};
+            font-weight: 600;
+          }
+          ${windowControlsCSS}
+        `
     });
 };
