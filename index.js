@@ -153,6 +153,19 @@ exports.decorateConfig = (config) => {
           .tab_tab.tab_active {
             background-color: transparent !important;
           }
+          .tab_tab.tab_hasActivity .tab_text {
+            color: ${colors.yellow} !important;
+          }
+          .tab_tab.tab_hasActivity .tab_icon:before,
+          .tab_tab.tab_hasActivity .tab_process:before {
+            background-color: ${colors.yellow} !important;
+          }
+          .tab_tab.tab_hasActivity .tab_icon:hover {
+            background-color: transparent !important;
+          }
+          .tab_tab.tab_hasActivity .tab_icon:hover:before {
+            background-color: ${colors.red} !important; 
+          }
           .tab_textActive {
             color: ${TAB_TEXT_COLOR};
             font-weight: 600;
